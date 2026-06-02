@@ -1,0 +1,45 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Environment Files
+.env
+.env.local
+.env.*.local
+
+# AWS
+*.pem
+
+# Docker
+.docker/
+
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Logs
+*.log
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Design Files
+*.psd
+*.ai
+
+# Kubernetes Sensitive Files
+kubeconfig
+*.kubeconfig
