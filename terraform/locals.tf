@@ -1,4 +1,4 @@
 locals {
-  project_name = "devops-assessment-saroj"
+  project_name = "devops-sr"
   environment  = "dev"
 }

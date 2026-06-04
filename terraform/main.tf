@@ -10,7 +10,7 @@ module "vpc" {
   public_subnets  = ["10.0.1.0/24", "10.0.2.0/24"]
   private_subnets = ["10.0.10.0/24", "10.0.11.0/24"]
 
-  azs = ["us-east-1a", "us-east-1b"]
+  azs = slice(data.aws_availability_zones.available.names, 0, 2)
 }
 
 # Security Group Module
@@ -29,8 +29,9 @@ module "eks" {
   project_name = local.project_name
   environment  = local.environment
 
-  vpc_id     = module.vpc.vpc_id
-  subnet_ids = module.vpc.private_subnets
+  cluster_version = "1.29"
 
-  cluster_security_group_id = module.security_group.security_group_id
+  vpc_id     = module.vpc.vpc_id
+  subnet_ids = module.vpc.private_subnet_ids
+
 }
