@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ .Release.Name }}-api-health-check
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Release.Name }}-backend
+spec:
+  schedule: {{ .Values.cronjob.schedule | quote }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: api-health-check
+              image: {{ .Values.cronjob.image }}
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  echo "Running health check at $(date)"
+                  curl -f http://{{ .Release.Name }}-backend:3001/health
+                  echo "Health check completed"

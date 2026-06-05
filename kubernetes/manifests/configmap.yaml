@@ -1,0 +1,20 @@
+# Frontend ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+  namespace: app
+data:
+  BACKEND_URL: "http://backend:3001"
+  PORT: "3000"
+---
+# Backend ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: app
+data:
+  PORT: "3001"
+  NODE_ENV: "production"
+  LOG_LEVEL: "info"

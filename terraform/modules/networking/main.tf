@@ -11,6 +11,17 @@ module "vpc" {
   }
 }
 
+
+resource "aws_internet_gateway" "this" {
+  vpc_id = module.vpc.vpc_id
+
+  tags = {
+    Name        = "${var.project_name}-${var.environment}-igw"
+    Project     = var.project_name
+    Environment = var.environment
+  }
+}
+
 module "subnets" {
   source  = "clouddrove/subnet/aws"
   version = "2.0.2"
@@ -28,4 +39,5 @@ module "subnets" {
 
   nat_gateway_enabled = true
   single_nat_gateway  = true
+  igw_id              = aws_internet_gateway.this.id
 }
