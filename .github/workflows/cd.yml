@@ -9,7 +9,7 @@ env:
   AWS_REGION: us-east-1
   AWS_ACCOUNT_ID: 464218211325
   ECR_REGISTRY: 464218211325.dkr.ecr.us-east-1.amazonaws.com
-  CLUSTER_NAME: devops-assessment-saroj-dev-eks
+  CLUSTER_NAME: devops-sr-dev-eks
   NAMESPACE: app
 
 jobs:
