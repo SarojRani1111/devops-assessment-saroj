@@ -11,7 +11,7 @@ module "eks" {
   vpc_id     = var.vpc_id
   subnet_ids = var.subnet_ids
 
-  enable_irsa = true
+  enable_irsa                              = true
   enable_cluster_creator_admin_permissions = true
 
   eks_managed_node_groups = {
